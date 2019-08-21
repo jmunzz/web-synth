@@ -7,23 +7,6 @@ import "./App.css";
 import "./sequencer.css";
 import "./waveshaper.css";
 
-// function myFunction() {
-//   document.getElementById("waveshaper").classList.toggle("show");
-// }
-
-// window.onclick = function(event) {
-//   if (!event.target.matches(".dropbtn")) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains("show")) {
-//         openDropdown.classList.remove("show");
-//       }
-//     }
-//   }
-// };
-
 class App extends React.Component {
   constructor() {
     super();
@@ -55,13 +38,14 @@ class App extends React.Component {
     Tone.Transport.stop();
   };
 
-  speed = () => {
-    Tone.Transport.bpm.value();
+  speed = bpm => {
+    Tone.Transport.bpm.value = bpm;
   };
 
   render() {
     return (
       <div id="container">
+        <h1>1IKATARU</h1>
         <div id="boxes">
           {" "}
           <div id="buttons2">
@@ -116,7 +100,12 @@ class App extends React.Component {
         <div id="buttons">
           <button onClick={() => this.start()}>start</button>
           <button onClick={() => this.stop()}>stop</button>
-          <input type="range" value="" />
+          <input
+            type="range"
+            min="70"
+            max="160"
+            onChange={event => this.speed(event.target.value)}
+          />
           <label>BPM</label>
         </div>
       </div>

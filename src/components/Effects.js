@@ -23,6 +23,7 @@ var ping = new Tone.PingPongDelay("4n", 0.2).toMaster();
 var verb = new Tone.Freeverb().toMaster();
 var dist = new Tone.Distortion().toMaster();
 var phaser = new Tone.Phaser().toMaster();
+var filter = new Tone.AutoFilter().toMaster();
 
 function firePing(event, props) {
   if (event.target.checked) {
@@ -56,6 +57,14 @@ function firePhaser(event, props) {
   }
 }
 
+function fireFilter(event, props) {
+  if (event.target.checked) {
+    props.synth.connect(filter);
+  } else {
+    props.synth.disconnect(filter);
+  }
+}
+
 function Effects(props) {
   return (
     <div className="dropdown">
@@ -83,6 +92,12 @@ function Effects(props) {
           value="ping"
         />
         <label>phaser</label>
+        <input
+          type="checkbox"
+          onChange={event => fireFilter(event, props)}
+          value="ping"
+        />
+        <label>filter</label>
       </div>
     </div>
   );

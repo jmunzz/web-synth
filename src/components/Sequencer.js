@@ -11,6 +11,9 @@ function changeColor(id) {
   }
 }
 
+const gain = new Tone.Gain(0.6);
+gain.toMaster(0.6);
+
 function Sequencer(props) {
   document.documentElement.addEventListener("mousedown", () => {
     if (Tone.context.state !== "running") Tone.context.resume();

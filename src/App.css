@@ -4,8 +4,8 @@
 }
 
 #buttons {
- margin-right: 450px;
- padding: 50px;
+ margin-right: 600px;
+ padding: 30px;
 }
 
 #buttons > button{
@@ -16,8 +16,6 @@
 }
 
 #waves{
-  
- 
   display: flex;
   flex-direction: column;
 }
@@ -44,4 +42,8 @@
   margin-bottom: 3px;
 }
 
-
+h1{
+  font-family: monospace;
+  font-size: 60px;
+  inset-inline-start: 200px;
+}
